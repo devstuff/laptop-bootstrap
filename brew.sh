@@ -182,6 +182,7 @@ main() {
   brew install xmlstarlet;
   brew install xz;
   brew install yamllint;
+  brew install yarn;
   brew install yq;
   brew install zip;
 
@@ -205,6 +206,7 @@ main() {
   brew install rake-completion;
   brew install ruby-completion;
   brew install vagrant-completion;
+  brew install yarn-completion;
 
   notify "Fonts";
   # Hack info: https://github.com/chrissimpkins/Hack
