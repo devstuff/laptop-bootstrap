@@ -14,7 +14,7 @@ notify() {
 main() {
   mkdir -p "${HOME}/bootstrap" && cd "${HOME}/bootstrap" && true;
   notify "Downloading and installing Homebrew, Dropbox, etc.";
-  /bin/bash -c "$(curl -sSfL "https://raw.githubusercontent.com/devstuff/laptop-bootstrap/brew.sh")";
+  /bin/bash -c "$(curl -sSfL "https://raw.githubusercontent.com/devstuff/laptop-bootstrap/master/brew.sh")";
 
   # shellcheck disable=SC2034
   read -r -p "Login to Dropbox, press Enter/Return when synchronization is complete." response;
