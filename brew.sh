@@ -18,33 +18,46 @@
 
 scriptName="$(basename "$0")";
 
-notify() {
-  >&2 echo "$(tput setaf 190)[${scriptName}]$(tput op) $*";
+notice() {
+  # COLUMNS is a shell variable, not exported to child processes, so use tput instead.
+  # ref: http://stackoverflow.com/a/1782909/41321
+  local cols=$(tput cols);
+  local len=${#1};
+  local prefix="[${scriptName}]";
+  local prefixLen=${#prefix};
+  local rem=$((${cols:-79}-len-prefixLen-2)); # 2 => spaces.
+  local rhs="$(printf "%${rem}s" '' | tr ' ' '=')";
+  # 13 is bright yellow green.
+  echo "$(tput setaf 13)${prefix}$(tput sgr0) $1 $(tput setaf 13)${rhs}$(tput sgr0)";
 }
+
 
 main() {
   # Apple command line tools can be installed with `xcode-select --install`
-  notify "Agree to the XCode license.";
+  notice "You must agree to the XCode license."; # ------------------------------------------------------
+
   sudo xcodebuild -license accept;
+
+  notice "Downloading and updating brew"; # -------------------------------------------------------------
 
   if ! type -t brew; then
     >&2 echo "Downloading and installing Homebrew";
     ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)";
   fi;
 
-  notify "Updating brew formulas...";
   brew update;
 
-  notify "Opening taps";
-  brew tap "caskroom/cask";
-  brew tap "caskroom/fonts";
-  brew tap "caskroom/versions";
+  notice "Opening taps"; # ------------------------------------------------------------------------------
+
+  brew tap "homebrew/cask";
+  brew tap "homebrew/cask-fonts";
+  brew tap "homebrew/cask-versions";
   brew tap "homebrew/core";
   brew tap "homebrew/services";
-  brew tap "homebrew/versions";
   brew tap "moul/moul";
 
-  notify "Latest bash shell";
+  notice "Latest bash shell"; # -------------------------------------------------------------------------
+
   # Use Homebrew's version of bash as the login shell.
   brew install bash;
   if ! grep "$(brew --prefix bash)/bin/bash" "/etc/shells" > /dev/null; then
@@ -53,7 +66,8 @@ main() {
     chsh -s "$(brew --prefix bash)/bin/bash";
   fi;
 
-  notify "Java JDKs";
+  notice "Java JDKs"; # ---------------------------------------------------------------------------------
+
   # The jce-unlimited-strength-policy package is no longer required as of JDK v1.8.0.161.
   # Use the AdoptOpenJDK.net builds of the JDK instead of the Oracle ones.
   brew cask install "AdoptOpenJDK/openjdk/adoptopenjdk8";
@@ -72,12 +86,13 @@ main() {
 
   # Try to keep these lists alphabetical for easy visual search.
 
-  notify "Primary packages";
+  notice "Installing primary packages"; # ---------------------------------------------------------------
+
   brew install adr-tools;
   brew install ant; # for ivycp
   brew install ammonite-repl;
   brew install asciidoc;
-  brew install asdf;
+  # brew install asdf;
   brew install awscli;
   brew install bats-core; # Shell script testing framework.
   brew install berkeley-db; # Needed for installing perl 5.26+ via perlbrew; ref: https://stackoverflow.com/a/46660972/41321
@@ -85,7 +100,7 @@ main() {
   brew install coreutils;
   brew install csshx;
   brew install ctop;
-  brew install curl --with-nghttp2;
+  brew install curl; # --with-nghttp2;
   brew install dependency-check;
   brew install diceware;
   brew install ditaa;
@@ -100,7 +115,7 @@ main() {
   brew install geoipupdate;
   brew install gettext;
   brew install gist;
-  brew install git --with-curl --with-openssl --with-perl;
+  brew install git; # --with-curl --with-openssl --with-perl;
   brew install git-cal;
   # brew install git-extras;
   brew install git-secrets;
@@ -121,10 +136,11 @@ main() {
   brew install httpie;
   brew install hub;
   brew install hunspell;
+  brew install ipcalc;
   brew install ivy; # for ivycp
   brew install jenv; # rbenv for Java
   brew install jfrog-cli-go;
-  brew install jmeter --with-plugins;
+  brew install jmeter; # --with-plugins;
   brew install jq; # requires Java to be installed first.
   brew install kubernetes-cli;
   brew install less; # includes lesskey (MacOS doesn't for some weird reason)
@@ -193,7 +209,8 @@ main() {
   brew install versent/taps/saml2aws;
   brew install wagoodman/dive/dive;
 
-  notify "Command line completions";
+  notice "Command line completions"; # ------------------------------------------------------------------
+
   brew install bash-completion@2; # for Bash v4.1+
   brew install bundler-completion;
   # brew install docker-compose-completion;
@@ -208,22 +225,25 @@ main() {
   brew install vagrant-completion;
   brew install yarn-completion;
 
-  notify "Fonts";
+  notice "Fonts"; # -------------------------------------------------------------------------------------
+
   # Hack info: https://github.com/chrissimpkins/Hack
-  brew cask install font-hack;
-  brew cask install font-hack-nerd-font-mono;
-  brew cask install font-fira-code;
-  brew cask instlal font-go-mono;
-  brew cask instlal font-go-mono-nerd-font-mono;
-  brew cask install font-inter-ui; # https://rsms.me/inter/
-  brew cask install font-source-code-pro;
-  brew cask install font-sourcecodepro-nerd-font-mono;
+  brew cask install homebrew/cask-fonts/font-hack;
+  brew cask install homebrew/cask-fonts/font-hack-nerd-font;
+  brew cask install homebrew/cask-fonts/font-fira-code;
+  brew cask install homebrew/cask-fonts/font-fira-code-nerd-font;
+  brew cask install homebrew/cask-fonts/font-go;
+  brew cask install homebrew/cask-fonts/font-go-mono-nerd-font;
+  brew cask install homebrew/cask-fonts/font-inter; # https://rsms.me/inter/
+  brew cask install homebrew/cask-fonts/font-source-code-pro;
+  brew cask install homebrew/cask-fonts/font-sauce-code-pro-nerd-font;
 
   # Alternate JVMs
   brew cask install graalvm/tap/graalvm-ce-java11;
   brew cask install graalvm/tap/graalvm-ce-lts-java11;
 
-  notify "Other tool casks";
+  notice "Other tool casks"; # --------------------------------------------------------------------------
+
   brew cask install 1password;
   brew cask install aerial; # Screensaver
   brew cask install --appdir="/Applications" araxis-merge; # Was broken, may need to download and install manually.
@@ -234,7 +254,7 @@ main() {
   brew cask install --appdir="/Applications" datadog-agent;
   brew cask install dropbox;
   brew cask install google-cloud-sdk;
-  brew cask install gpg-suite;
+  # brew cask install gpg-suite;
   brew cask install jetbrains-toolbox; # Manage IntelliJ, etc.
   brew cask install key-codes;
   brew cask install lastpass;
@@ -251,19 +271,62 @@ main() {
   brew cask install vlc;
   brew cask install xquartz; # Legacy X11 support.
 
-  notify "Python packages";
+  notice "Python packages"; # ---------------------------------------------------------------------------
+
   # Python packages (no need for sudo when using brewed python)
   # easy_install "pip"; # pip is preinstalled with python 2.7.9+ or 3.4+
-  pip install Pygments;
-  pip install json-spec;
-  pip install mintotp;
-  pip install truffleHog;
-  pip install xml2rfc; # via https://xml2rfc.tools.ietf.org/
+  local pythonPath="$(brew --prefix python)";
+  "${pythonPath}/bin/pip3" install Pygments;
+  "${pythonPath}/bin/pip3" install json-spec;
+  "${pythonPath}/bin/pip3" install mintotp;
+  "${pythonPath}/bin/pip3" install truffleHog;
+  "${pythonPath}/bin/pip3" install xml2rfc; # via https://xml2rfc.tools.ietf.org/
   # pip install yamllint; # using brew instead.
+
+  # Mac App Store packages are installed using the mas cli; must be logged
+  # into your iCloud account for this to work.
+  #
+  # The list can be updated using:
+  #
+  #   mas list | sed -E -e "s/^([0-9][0-9]*) (.*)/mas install \1; # \2/g" | sort -t '#' -b -k2,2df | pbcopy;
+  #
+  notice "Mac App Store packages"; # --------------------------------------------------------------------
+
+  mas install 1028918091; # APG (2.2)
+  mas install 961632517; # Be Focused Pro (2.0)
+  mas install 1121192229; # Better (2020.2)
+  mas install 417375580; # BetterSnapTool (1.9.3)
+  mas install 411246225; # Caffeine (1.1.1)
+  mas install 574607554; # com.hummersoftware.ImageExifEditor (5.1.1)
+  mas install 1333277187; # Disconnect Premium (3.1.2)
+  mas install 462058435; # Microsoft Excel (16.40)
+  mas install 784801555; # Microsoft OneNote (16.40)
+  mas install 985367838; # Microsoft Outlook (16.40)
+  mas install 462062816; # Microsoft PowerPoint (16.40)
+  mas install 462054704; # Microsoft Word (16.40)
+  mas install 504284434; # Multi Monitor Wallpaper (2.97)
+  mas install 409203825; # Numbers (10.1)
+  mas install 823766827; # OneDrive (20.084.0426)
+  mas install 409201541; # Pages (10.1)
+  mas install 1303222628; # Paprika Recipe Manager 3 (3.4.5)
+  mas install 984335872; # PDF Image Xtractor (1.3.3)
+  mas install 545164971; # PDF Toolkit+ (2.3)
+  mas install 520993579; # pwSafe (4.17)
+  mas install 871368974; # QR Crafter (1.0)
+  mas install 466385995; # SciTE (4.4.4)
+  mas install 496437906; # Shush (1.2.1)
+  mas install 803453959; # Slack (4.8.0)
+  mas install 552792489; # StatusClock (1.2)
+  mas install 435410196; # Stay (1.3)
+  mas install 1191449274; # ToothFairy (2.6.2)
+  mas install 533696630; # Webcam Settings (3.0)
+  mas install 497799835; # Xcode (11.3.1)
 
   # For HTTPie (https://github.com/jkbrzt/httpie), SNI (Server Name Indication)
   # support needs updated stuff for Python versions < 2.7.9
   # sudo pip install --upgrade pyopenssl pyasn1 ndg-httpsclient;
+
+  notice "Configuring jenv"; # --------------------------------------------------------------------------
 
   # The current version of the jenv formula (as at 2018-06-01) doesn't create
   # the ~/.jenv/versions folder, which is required when using "jenv add".
