@@ -135,6 +135,7 @@ main() {
   brew install htop;
   brew install httpie;
   brew install hub;
+  brew install hugo;
   brew install hunspell;
   brew install ipcalc;
   brew install ivy; # for ivycp
@@ -206,6 +207,7 @@ main() {
   brew install github/gh/gh;
   brew install johanhaleby/kubetail/kubetail;
   brew install moul/moul/docker-diff;
+  brew install snyk/tap/snyk; # https://snyk.io
   brew install versent/taps/saml2aws;
   brew install wagoodman/dive/dive;
 
@@ -255,6 +257,7 @@ main() {
   brew cask install dropbox;
   brew cask install google-cloud-sdk;
   # brew cask install gpg-suite;
+  brew cask install insomnia; # REST API tester.
   brew cask install jetbrains-toolbox; # Manage IntelliJ, etc.
   brew cask install key-codes;
   brew cask install lastpass;
