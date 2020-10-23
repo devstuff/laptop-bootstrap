@@ -144,6 +144,7 @@ main() {
   brew install jmeter; # --with-plugins;
   brew install jq; # requires Java to be installed first.
   brew install kubernetes-cli;
+  brew install lastpass-cli;
   brew install less; # includes lesskey (MacOS doesn't for some weird reason)
   brew install lesspipe;
   brew install mas;
