@@ -54,7 +54,6 @@ main() {
   brew tap "homebrew/cask-versions";
   brew tap "homebrew/core";
   brew tap "homebrew/services";
-  brew tap "moul/moul";
 
   notice "Latest bash shell"; # -------------------------------------------------------------------------
 
@@ -69,11 +68,11 @@ main() {
   notice "Java JDKs"; # ---------------------------------------------------------------------------------
 
   # The jce-unlimited-strength-policy package is no longer required as of JDK v1.8.0.161.
-  # Use the AdoptOpenJDK.net builds of the JDK instead of the Oracle ones.
-  brew cask install "AdoptOpenJDK/openjdk/adoptopenjdk8";
-  brew cask install "AdoptOpenJDK/openjdk/adoptopenjdk11";
-  brew cask install "AdoptOpenJDK/openjdk/adoptopenjdk12";
-  brew cask install "AdoptOpenJDK/openjdk/adoptopenjdk13";
+  # Use the Adoptium (formerly AdoptOpenJDK) builds of the JDK instead of the Oracle ones.
+  brew install temurin; # Latest JDK from Eclipse/Adoptium
+  brew install temurin11; # v11 LTS JDK from Eclipse/Adoptium
+  brew install temurin8; # v1.8 LTS JDK from Eclipse/Adoptium
+  # brew install corretto; # Amazon JDK
 
   if [[ ! -d "/usr/local/sbin" ]]; then
     >&2 echo "Your sudo password is required to create /usr/local/sbin";
@@ -94,42 +93,58 @@ main() {
   brew install asciidoc;
   # brew install asdf;
   brew install awscli;
+
   brew install bats-core; # Shell script testing framework.
   brew install berkeley-db; # Needed for installing perl 5.26+ via perlbrew; ref: https://stackoverflow.com/a/46660972/41321
+
   brew install colordiff;
+  brew install cosign;
   brew install coreutils;
   brew install csshx;
   brew install ctop;
-  brew install curl; # --with-nghttp2;
+  brew install curl;
+
   brew install dependency-check;
   brew install diceware;
   brew install ditaa;
-  brew install docker;
-  brew install docker-credential-helper; # for docker-credential-osxkeychain
+  brew install dive;
+#  brew install docker;                        # CLI; use Docker Desktop instead.
+#  brew install docker-credential-helper;      # for docker-credential-osxkeychain; supplied by Docker Desktop
+#  brew install docker-credential-helper-ecr;  # for docker-credential-helper-ecr-login; supplied by Docker Desktop
   brew install dockutil;
+  brew install dog;
+  brew install duf;
+  brew install dust;
+
   brew install enchant;
+
   brew install findutils;
   brew install fswatch;
+
   brew install gawk;
   brew install gcviewer;
   brew install geoipupdate;
   brew install gettext;
   brew install gist;
-  brew install git; # --with-curl --with-openssl --with-perl;
+  brew install git;
   brew install git-cal;
+  brew install git-delta;
   # brew install git-extras;
+  brew install git-gui; # gitk, etc.
   brew install git-secrets;
-  brew install giter8;
+  brew install gnu-gar; # For avoiding MacOS/BSD tar extended info that GNU doesn't handle. On the GNU side these cause
+                        # warnings like: "tar: Ignoring unknown extended header keyword 'LIBARCHIVE.xattr.com.dropbox.attrs'"
   brew install gnu-units;
   brew install gnupg;
   brew install gnupg2;
   brew install go;
   brew install go-jira;
-  brew install gpg-agent;
+  brew install gping;
   brew install graphviz;
   brew install grc;
   brew install grep;
   brew install grpc;
+
   brew install hadolint;
   brew install hr;
   brew install htop;
@@ -138,18 +153,25 @@ main() {
   brew install hugo;
   brew install hunspell;
   brew install ipcalc;
+
   brew install ivy; # for ivycp
+
   brew install jenv; # rbenv for Java
   brew install jfrog-cli-go;
-  brew install jmeter; # --with-plugins;
+  brew install jless;
+  brew install jmeter;
   brew install jq; # requires Java to be installed first.
+
   brew install kubernetes-cli;
+
   brew install lastpass-cli;
   brew install less; # includes lesskey (MacOS doesn't for some weird reason)
   brew install lesspipe;
+
   brew install mas;
   brew install maven;
   brew install mercurial; # aka "hg".
+  brew install micro; # console editor.
   brew install midnight-commander;
   brew install mill;
   # brew install minikube;
@@ -157,9 +179,14 @@ main() {
   brew install multitail;
   brew install mysql; # && brew services start mysql;
   brew install mysql@5.7; # && brew services start mysql@5.7;
+
   brew install nano;
   brew install npm;
+
+  brew install opa;
+  brew install openapi-generator;
   brew install openssl@1.1;
+
   brew install p7zip;
   brew install packer;
   brew install pandoc;
@@ -168,6 +195,7 @@ main() {
   brew install pstree;
   brew install python;
   brew install pwgen;
+
   brew install rbenv;
   brew install rbenv-default-gems;
   brew install reattach-to-user-namespace;
@@ -175,6 +203,7 @@ main() {
   brew install rfcdiff; # required for github.com/lvc/installer-4j
   brew install rlwrap;
   brew install ruby-build;
+
   brew install safe-rm;
   brew install sbt; # requires Java to be installed first.
   brew install scala;
@@ -184,38 +213,50 @@ main() {
   brew install shellcheck;
   brew install sleepwatcher; # expects /usr/local/sbin to exist, otherwise "brew link sleepwatcher" will fail.
   # brew install source-highlight; # Dependency of asciidoc.
+  brew install sonar-scanner;
   brew install sqlite;
   # brew install sshrc"; # https://github.com/Russell91/sshrc (now in .dotfiles, + local mods)
   brew install sshuttle; # SSH auto-VPN
   brew install starship;
+
   brew install terminal-notifier && brew linkapps terminal-notifier;
   brew install terraform;
-  brew install travis;
   brew install tree;
+
   brew install unzip;
+
   brew install vault; # Hashicorp Vault
+
   brew install wdiff; # required for github.com/lvc/installer-4j
   brew install wget;
   # brew install wrk;
+
   brew install xmlstarlet;
   brew install xz;
+
   brew install yamllint;
   brew install yarn;
   brew install yq;
+
   brew install zip;
 
+  brew install coursier/formulas/coursier;
   brew install discoteq/discoteq/flock;
   brew install github/gh/gh;
+  brew install homeport/tap/dyff;
   brew install johanhaleby/kubetail/kubetail;
+  brew install mike-engel/jwt-cli/jwt-cli;
   brew install moul/moul/docker-diff;
   brew install snyk/tap/snyk; # https://snyk.io
   brew install versent/taps/saml2aws;
-  brew install wagoodman/dive/dive;
+  brew install vmware-tanzu/carvel/vendir;
+  brew install zendesk/devops/scooter;
 
   notice "Command line completions"; # ------------------------------------------------------------------
 
   brew install bash-completion@2; # for Bash v4.1+
   brew install bundler-completion;
+  # brew install docker-completion; # Installed as part of docker.
   # brew install docker-compose-completion;
   # brew install docker-machine-completion;
   brew install gem-completion;
@@ -225,55 +266,74 @@ main() {
   brew install rails-completion;
   brew install rake-completion;
   brew install ruby-completion;
-  brew install vagrant-completion;
+#  brew install vagrant-completion;
   brew install yarn-completion;
+  brew install zsh-completions;
 
   notice "Fonts"; # -------------------------------------------------------------------------------------
 
   # Hack info: https://github.com/chrissimpkins/Hack
-  brew cask install homebrew/cask-fonts/font-hack;
-  brew cask install homebrew/cask-fonts/font-hack-nerd-font;
-  brew cask install homebrew/cask-fonts/font-fira-code;
-  brew cask install homebrew/cask-fonts/font-fira-code-nerd-font;
-  brew cask install homebrew/cask-fonts/font-go;
-  brew cask install homebrew/cask-fonts/font-go-mono-nerd-font;
-  brew cask install homebrew/cask-fonts/font-inter; # https://rsms.me/inter/
-  brew cask install homebrew/cask-fonts/font-source-code-pro;
-  brew cask install homebrew/cask-fonts/font-sauce-code-pro-nerd-font;
+  brew install homebrew/cask-fonts/font-hack;
+  brew install homebrew/cask-fonts/font-hack-nerd-font;
+  brew install homebrew/cask-fonts/font-fira-code;
+  brew install homebrew/cask-fonts/font-fira-code-nerd-font;
+  brew install homebrew/cask-fonts/font-go;
+  brew install homebrew/cask-fonts/font-go-mono-nerd-font;
+  brew install homebrew/cask-fonts/font-inter; # https://rsms.me/inter/
+  brew install homebrew/cask-fonts/font-source-code-pro;
+  brew install homebrew/cask-fonts/font-sauce-code-pro-nerd-font;
 
-  # Alternate JVMs
-  brew cask install graalvm/tap/graalvm-ce-java11;
-  brew cask install graalvm/tap/graalvm-ce-lts-java11;
+  # # Alternate JVMs
+  # brew install graalvm/tap/graalvm-ce-java11;
+  # brew install graalvm/tap/graalvm-ce-lts-java11;
 
   notice "Other tool casks"; # --------------------------------------------------------------------------
 
-  brew cask install 1password;
-  brew cask install aerial; # Screensaver
-  brew cask install --appdir="/Applications" araxis-merge; # Was broken, may need to download and install manually.
-  brew cask install authy;
-  brew cask install --appdir="/Applications" bitbar;
-  brew cask install --appdir="/Applications" ccmenu;
-  brew cask install charles;
-  brew cask install --appdir="/Applications" datadog-agent;
-  brew cask install dropbox;
-  brew cask install google-cloud-sdk;
-  # brew cask install gpg-suite;
-  brew cask install insomnia; # REST API tester.
-  brew cask install jetbrains-toolbox; # Manage IntelliJ, etc.
-  brew cask install key-codes;
-  brew cask install lastpass;
-  brew cask install --appdir="/Applications" mysqlworkbench;
-  brew cask install osxfuse;
-  brew cask install --appdir="/Applications" paintbrush;
-  brew cask install postman;
-  brew cask install sqlitestudio;
-  brew cask install sublime-text;
-  brew cask install sublime-merge;
-  brew cask install vagrant;
-  brew cask install veracrypt;
-  brew cask install virtualbox;
-  brew cask install vlc;
-  brew cask install xquartz; # Legacy X11 support.
+  brew install 1password;
+  brew install 1password-cli;
+
+  brew install aerial; # Screensaver
+  brew install araxis-merge; # Was broken, may need to download and install manually.
+  brew install authy;
+
+  brew install ccmenu;
+  brew install charles;
+
+  brew install datadog-agent;
+  brew install diffmerge;
+  brew install homebrew/cask/docker; # Docker Desktop UI (originally I needed --force to avoid issues with existing completions).
+  brew install dropbox;
+
+  brew install google-cloud-sdk;
+  # brew install gpg-suite;
+
+  brew install insomnia; # REST API tester.
+
+  brew install jetbrains-toolbox; # Manage IntelliJ, etc.
+
+  brew install key-codes;
+
+  brew install lastpass;
+
+  brew install mysqlworkbench;
+
+  brew install osxfuse;
+
+  brew install paintbrush;
+  brew install pdfkey-pro;
+  brew install postman;
+
+  brew install sqlitestudio;
+  brew install sublime-text;
+  brew install sublime-merge;
+
+#  brew install vagrant;
+  brew install veracrypt;
+#  brew install virtualbox;
+  brew install vlc;
+
+  brew install xbar;    # The reboot of bitbar.
+  brew install xquartz; # Legacy X11 support.
 
   notice "Python packages"; # ---------------------------------------------------------------------------
 
@@ -345,7 +405,7 @@ main() {
     done < <(find /Library/Java/JavaVirtualMachines -type d -maxdepth 1 -mindepth 1 -print);
   fi;
 
-  # Default to Java 8 (1.8) for SBT.
+  # Default to Java 11 for SBT.
   if [ ! -r "${HOME}/.jenv/version" ]; then
     jenv global 11;
     jenv rehash;
