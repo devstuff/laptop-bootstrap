@@ -246,6 +246,7 @@ main() {
   brew install homeport/tap/dyff;
   brew install johanhaleby/kubetail/kubetail;
   brew install mike-engel/jwt-cli/jwt-cli;
+  brew install mongodb/brew/mongodb-community; # Needed by zd-remote-auth
   brew install moul/moul/docker-diff;
   brew install snyk/tap/snyk; # https://snyk.io
   brew install versent/taps/saml2aws;
