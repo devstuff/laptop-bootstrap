@@ -129,7 +129,6 @@ main() {
   brew install git;
   brew install git-cal;
   brew install git-delta;
-  # brew install git-extras;
   brew install git-gui; # gitk, etc.
   brew install git-secrets;
   brew install gnu-gar; # For avoiding MacOS/BSD tar extended info that GNU doesn't handle. On the GNU side these cause
@@ -162,6 +161,7 @@ main() {
   brew install jmeter;
   brew install jq; # requires Java to be installed first.
 
+  brew install k9s;
   brew install kubernetes-cli;
 
   brew install lastpass-cli;
@@ -215,6 +215,7 @@ main() {
   # brew install source-highlight; # Dependency of asciidoc.
   brew install sonar-scanner;
   brew install sqlite;
+  brew install sqlite-utils;
   # brew install sshrc"; # https://github.com/Russell91/sshrc (now in .dotfiles, + local mods)
   brew install sshuttle; # SSH auto-VPN
   brew install starship;
@@ -234,6 +235,7 @@ main() {
   brew install xmlstarlet;
   brew install xz;
 
+  brew install yamale;  # Schema validator for yaml
   brew install yamllint;
   brew install yarn;
   brew install yq;
