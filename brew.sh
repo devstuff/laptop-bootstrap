@@ -181,7 +181,7 @@ main() {
   brew install mysql@5.7; # && brew services start mysql@5.7;
 
   brew install nano;
-  brew install npm;
+  brew install node; # AKA nodejs, npm
 
   brew install opa;
   brew install openapi-generator;
@@ -195,6 +195,8 @@ main() {
   brew install pstree;
   brew install python;
   brew install pwgen;
+  brew install pyenv;
+  brew install pyenv-virtualenv;
 
   brew install rbenv;
   brew install rbenv-default-gems;
