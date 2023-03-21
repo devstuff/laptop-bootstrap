@@ -105,6 +105,7 @@ main() {
   brew install curl;
 
   brew install dependency-check;
+  brew install dhall-json;
   brew install diceware;
   brew install ditaa;
   brew install dive;
