@@ -105,6 +105,7 @@ main() {
   brew install curl;
 
   brew install dependency-check;
+  brew install dhall;
   brew install dhall-json;
   brew install diceware;
   brew install ditaa;
@@ -340,6 +341,8 @@ main() {
 
   brew install xbar;    # The reboot of bitbar.
   brew install xquartz; # Legacy X11 support.
+
+  brew install yubico-authenticator;
 
   notice "Python packages"; # ---------------------------------------------------------------------------
 
