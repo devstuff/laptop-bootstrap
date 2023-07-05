@@ -133,6 +133,7 @@ main() {
   brew install git-delta;
   brew install git-gui; # gitk, etc.
   brew install git-secrets;
+  brew install git-sizer;
   brew install gnu-gar; # For avoiding MacOS/BSD tar extended info that GNU doesn't handle. On the GNU side these cause
                         # warnings like: "tar: Ignoring unknown extended header keyword 'LIBARCHIVE.xattr.com.dropbox.attrs'"
   brew install gnu-units;
