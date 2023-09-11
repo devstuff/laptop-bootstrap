@@ -96,6 +96,7 @@ main() {
 
   brew install bats-core; # Shell script testing framework.
   brew install berkeley-db; # Needed for installing perl 5.26+ via perlbrew; ref: https://stackoverflow.com/a/46660972/41321
+  brew install blueutil;
 
   brew install colordiff;
   brew install cosign;
@@ -121,6 +122,7 @@ main() {
   brew install enchant;
 
   brew install findutils;
+  brew install fortune;
   brew install fswatch;
 
   brew install gawk;
