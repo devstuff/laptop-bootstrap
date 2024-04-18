@@ -120,6 +120,7 @@ main() {
   brew install dust;
 
   brew install enchant;
+  brew install esphome;
 
   brew install findutils;
   brew install fortune;
@@ -181,6 +182,7 @@ main() {
   brew install mill;
   # brew install minikube;
   brew install most;
+  brew install mosquitto; # MQTT client
   brew install multitail;
   brew install mysql; # && brew services start mysql;
   brew install mysql@5.7; # && brew services start mysql@5.7;
@@ -196,6 +198,7 @@ main() {
   brew install packer;
   brew install pandoc;
   brew install pinentry-mac && brew linkapps pinentry-mac;
+  brew install platformio;
   # brew install proguard;
   brew install pstree;
   brew install python;
@@ -210,6 +213,7 @@ main() {
   brew install rfcdiff; # required for github.com/lvc/installer-4j
   brew install rlwrap;
   brew install ruby-build;
+  brew install rust;
 
   brew install safe-rm;
   brew install sbt; # requires Java to be installed first.
@@ -224,6 +228,7 @@ main() {
   brew install sqlite;
   brew install sqlite-utils;
   # brew install sshrc"; # https://github.com/Russell91/sshrc (now in .dotfiles, + local mods)
+  brew install ssh-audit;
   brew install sshuttle; # SSH auto-VPN
   brew install starship;
 
@@ -260,7 +265,9 @@ main() {
   brew install snyk/tap/snyk; # https://snyk.io
   brew install versent/taps/saml2aws;
   brew install vmware-tanzu/carvel/vendir;
+  brew install zendesk/devops/cicd-cli;
   brew install zendesk/devops/scooter;
+  brew install zendesk/zendesk/secret-service-cli;
 
   notice "Command line completions"; # ------------------------------------------------------------------
 
