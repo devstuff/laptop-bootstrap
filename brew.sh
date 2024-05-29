@@ -94,6 +94,7 @@ main() {
   # brew install asdf;
   brew install awscli;
 
+  brew install badkeys;
   brew install bats-core; # Shell script testing framework.
   brew install berkeley-db; # Needed for installing perl 5.26+ via perlbrew; ref: https://stackoverflow.com/a/46660972/41321
   brew install blueutil;
@@ -106,6 +107,7 @@ main() {
   brew install curl;
 
   brew install dependency-check;
+  brew install devspace; # for Scooter
   brew install dhall;
   brew install dhall-json;
   brew install diceware;
@@ -245,9 +247,11 @@ main() {
   # brew install wrk;
 
   brew install xmlstarlet;
+  brew install xq;
   brew install xz;
 
   brew install yamale;  # Schema validator for yaml
+  brew install yamlfmt;
   brew install yamllint;
   brew install yarn;
   brew install yq;
@@ -424,9 +428,9 @@ main() {
     done < <(find /Library/Java/JavaVirtualMachines -type d -maxdepth 1 -mindepth 1 -print);
   fi;
 
-  # Default to Java 11 for SBT.
+  # Default to Java 17 for SBT.
   if [ ! -r "${HOME}/.jenv/version" ]; then
-    jenv global 11;
+    jenv global 17;
     jenv rehash;
   fi;
 }
