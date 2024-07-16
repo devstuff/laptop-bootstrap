@@ -271,6 +271,7 @@ main() {
   brew install vmware-tanzu/carvel/vendir;
   brew install zendesk/devops/cicd-cli;
   brew install zendesk/devops/scooter;
+  brew install zendesk/zendesk/ric;
   brew install zendesk/zendesk/secret-service-cli;
 
   notice "Command line completions"; # ------------------------------------------------------------------
@@ -325,6 +326,7 @@ main() {
   brew install homebrew/cask/docker; # Docker Desktop UI (originally I needed --force to avoid issues with existing completions).
   brew install dropbox;
 
+  brew install --cask git-credential-manager;
   brew install google-cloud-sdk;
   # brew install gpg-suite;
 
