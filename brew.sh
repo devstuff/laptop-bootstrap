@@ -159,8 +159,9 @@ main() {
   brew install hub;
   brew install hugo;
   brew install hunspell;
-  brew install ipcalc;
 
+  brew install inkscape;
+  brew install ipcalc;
   brew install ivy; # for ivycp
 
   brew install jenv; # rbenv for Java
