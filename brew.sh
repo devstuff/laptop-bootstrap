@@ -50,10 +50,7 @@ main() {
   notice "Opening taps"; # ------------------------------------------------------------------------------
 
   brew tap "homebrew/cask";
-  brew tap "homebrew/cask-fonts";
-  brew tap "homebrew/cask-versions";
   brew tap "homebrew/core";
-  brew tap "homebrew/services";
 
   notice "Latest bash shell"; # -------------------------------------------------------------------------
 
@@ -67,11 +64,10 @@ main() {
 
   notice "Java JDKs"; # ---------------------------------------------------------------------------------
 
-  # The jce-unlimited-strength-policy package is no longer required as of JDK v1.8.0.161.
   # Use the Adoptium (formerly AdoptOpenJDK) builds of the JDK instead of the Oracle ones.
   brew install temurin; # Latest JDK from Eclipse/Adoptium
-  brew install temurin11; # v11 LTS JDK from Eclipse/Adoptium
-  brew install temurin8; # v1.8 LTS JDK from Eclipse/Adoptium
+#  brew install temurin11; # v11 LTS JDK from Eclipse/Adoptium
+#  brew install temurin8; # v1.8 LTS JDK from Eclipse/Adoptium
   # brew install corretto; # Amazon JDK
 
   if [[ ! -d "/usr/local/sbin" ]]; then
@@ -107,9 +103,9 @@ main() {
   brew install curl;
 
   brew install dependency-check;
-  brew install devspace; # for Scooter
-  brew install dhall;
-  brew install dhall-json;
+#  brew install devspace; # for Scooter
+#  brew install dhall;
+#  brew install dhall-json;
   brew install diceware;
   brew install ditaa;
   brew install dive;
@@ -270,10 +266,6 @@ main() {
   brew install snyk/tap/snyk; # https://snyk.io
   brew install versent/taps/saml2aws;
   brew install vmware-tanzu/carvel/vendir;
-  brew install zendesk/devops/cicd-cli;
-  brew install zendesk/devops/scooter;
-  brew install zendesk/zendesk/ric;
-  brew install zendesk/zendesk/secret-service-cli;
 
   notice "Command line completions"; # ------------------------------------------------------------------
 
@@ -386,30 +378,30 @@ main() {
   mas install 961632517; # Be Focused Pro (2.0)
   mas install 1121192229; # Better (2020.2)
   mas install 417375580; # BetterSnapTool (1.9.3)
-  mas install 411246225; # Caffeine (1.1.1)
+#  mas install 411246225; # Caffeine (1.1.1)
   mas install 574607554; # com.hummersoftware.ImageExifEditor (5.1.1)
   mas install 1333277187; # Disconnect Premium (3.1.2)
-  mas install 462058435; # Microsoft Excel (16.40)
-  mas install 784801555; # Microsoft OneNote (16.40)
-  mas install 985367838; # Microsoft Outlook (16.40)
-  mas install 462062816; # Microsoft PowerPoint (16.40)
-  mas install 462054704; # Microsoft Word (16.40)
+#  mas install 462058435; # Microsoft Excel (16.40)
+#  mas install 784801555; # Microsoft OneNote (16.40)
+#  mas install 985367838; # Microsoft Outlook (16.40)
+#  mas install 462062816; # Microsoft PowerPoint (16.40)
+#  mas install 462054704; # Microsoft Word (16.40)
   mas install 504284434; # Multi Monitor Wallpaper (2.97)
-  mas install 409203825; # Numbers (10.1)
+#  mas install 409203825; # Numbers (10.1)
   mas install 823766827; # OneDrive (20.084.0426)
-  mas install 409201541; # Pages (10.1)
+#  mas install 409201541; # Pages (10.1)
   mas install 1303222628; # Paprika Recipe Manager 3 (3.4.5)
   mas install 984335872; # PDF Image Xtractor (1.3.3)
   mas install 545164971; # PDF Toolkit+ (2.3)
   mas install 520993579; # pwSafe (4.17)
   mas install 871368974; # QR Crafter (1.0)
-  mas install 466385995; # SciTE (4.4.4)
+#  mas install 466385995; # SciTE (4.4.4)
   mas install 496437906; # Shush (1.2.1)
   mas install 803453959; # Slack (4.8.0)
   mas install 552792489; # StatusClock (1.2)
   mas install 435410196; # Stay (1.3)
   mas install 1191449274; # ToothFairy (2.6.2)
-  mas install 533696630; # Webcam Settings (3.0)
+#  mas install 533696630; # Webcam Settings (3.0)
   mas install 497799835; # Xcode (11.3.1)
 
   # For HTTPie (https://github.com/jkbrzt/httpie), SNI (Server Name Indication)
