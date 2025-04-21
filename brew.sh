@@ -120,6 +120,7 @@ main() {
   brew install enchant;
   brew install esphome;
 
+  brew install ffmpeg;
   brew install findutils;
   brew install fortune;
   brew install fswatch;
@@ -133,6 +134,7 @@ main() {
   brew install git-cal;
   brew install git-delta;
   brew install git-gui; # gitk, etc.
+  brew install git-lfs;
   brew install git-secrets;
   brew install git-sizer;
   brew install gnu-gar; # For avoiding MacOS/BSD tar extended info that GNU doesn't handle. On the GNU side these cause
@@ -187,6 +189,7 @@ main() {
   brew install mysql@5.7; # && brew services start mysql@5.7;
 
   brew install nano;
+  brew install npm;
   brew install node; # AKA nodejs, npm
 
   brew install opa;
@@ -198,6 +201,7 @@ main() {
   brew install pandoc;
   brew install pinentry-mac && brew linkapps pinentry-mac;
   brew install platformio;
+  brew install poetry;
   # brew install proguard;
   brew install pstree;
   brew install python;
@@ -232,7 +236,7 @@ main() {
   brew install starship;
 
   brew install terminal-notifier && brew linkapps terminal-notifier;
-  brew install terraform;
+  # brew install terraform; # Pinned at v1.5.7 due to non-open-source license change (2023).
   brew install tree;
 
   brew install unzip;
@@ -258,6 +262,7 @@ main() {
   brew install coursier/formulas/coursier;
   brew install discoteq/discoteq/flock;
   brew install github/gh/gh;
+  brew install hashicorp/tap/terraform; # Latest terraform, BUSL license
   brew install homeport/tap/dyff;
   brew install johanhaleby/kubetail/kubetail;
   brew install mike-engel/jwt-cli/jwt-cli;
