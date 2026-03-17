@@ -95,6 +95,9 @@ main() {
   brew install berkeley-db; # Needed for installing perl 5.26+ via perlbrew; ref: https://stackoverflow.com/a/46660972/41321
   brew install blueutil;
 
+  brew install --no-quarantine clickhouse; # Deprecated due to Gatekeeper violation, will be disabled 2026-09-01.
+  brew install clickhouse-odbc;
+  brew install clickhouse-sql-parser;
   brew install colordiff;
   brew install cosign;
   brew install coreutils;
@@ -129,6 +132,7 @@ main() {
   brew install gcviewer;
   brew install geoipupdate;
   brew install gettext;
+  brew install gh;
   brew install gist;
   brew install git;
   brew install git-cal;
@@ -137,13 +141,14 @@ main() {
   brew install git-lfs;
   brew install git-secrets;
   brew install git-sizer;
+  brew install glab;    # GitLab's equivalent to GitHub's `gh`.
   brew install gnu-gar; # For avoiding MacOS/BSD tar extended info that GNU doesn't handle. On the GNU side these cause
                         # warnings like: "tar: Ignoring unknown extended header keyword 'LIBARCHIVE.xattr.com.dropbox.attrs'"
   brew install gnu-units;
   brew install gnupg;
   brew install gnupg2;
   brew install go;
-  brew install go-jira;
+  # brew install go-jira; # or jira-cli
   brew install gping;
   brew install graphviz;
   brew install grc;
@@ -163,6 +168,7 @@ main() {
   brew install ivy; # for ivycp
 
   brew install jenv; # rbenv for Java
+  brew install jira-cli; # or go-jira
   brew install jfrog-cli-go;
   brew install jless;
   brew install jmeter;
@@ -182,9 +188,11 @@ main() {
   brew install midnight-commander;
   brew install mill;
   # brew install minikube;
+  brew install mongodb-compass;
   brew install most;
   brew install mosquitto; # MQTT client
   brew install multitail;
+  brew install mypy;
   brew install mysql; # && brew services start mysql;
   brew install mysql@5.7; # && brew services start mysql@5.7;
 
@@ -199,6 +207,7 @@ main() {
   brew install p7zip;
   brew install packer;
   brew install pandoc;
+  brew install php@8.4;
   brew install pinentry-mac && brew linkapps pinentry-mac;
   brew install platformio;
   brew install poetry;
@@ -224,6 +233,7 @@ main() {
   brew install scalariform;
   brew install scalastyle;
   brew install sendemail;
+  brew install sequel-ace;
   brew install shellcheck;
   brew install sleepwatcher; # expects /usr/local/sbin to exist, otherwise "brew link sleepwatcher" will fail.
   # brew install source-highlight; # Dependency of asciidoc.
@@ -261,16 +271,17 @@ main() {
 
   brew install coursier/formulas/coursier;
   brew install discoteq/discoteq/flock;
-  brew install github/gh/gh;
   brew install hashicorp/tap/terraform; # Latest terraform, BUSL license
   brew install homeport/tap/dyff;
   brew install johanhaleby/kubetail/kubetail;
+  brew install launchdarkly/homebrew-tap/ldcli;
   brew install mike-engel/jwt-cli/jwt-cli;
-  brew install mongodb/brew/mongodb-community; # Needed by zd-remote-auth
+  brew install mongodb/brew/mongodb-community;
   brew install moul/moul/docker-diff;
   brew install snyk/tap/snyk; # https://snyk.io
   brew install versent/taps/saml2aws;
   brew install vmware-tanzu/carvel/vendir;
+  brew install common-fate/granted/granted; # AWS role selector; https://granted.dev
 
   notice "Command line completions"; # ------------------------------------------------------------------
 
@@ -363,12 +374,16 @@ main() {
   # Python packages (no need for sudo when using brewed python)
   # easy_install "pip"; # pip is preinstalled with python 2.7.9+ or 3.4+
   local pythonPath="$(brew --prefix python)";
-  "${pythonPath}/bin/pip3" install Pygments;
+  # "${pythonPath}/bin/pip3" install Pygments; # installed using brew instead.
+  brew install pygments;
   "${pythonPath}/bin/pip3" install json-spec;
   "${pythonPath}/bin/pip3" install mintotp;
-  "${pythonPath}/bin/pip3" install truffleHog;
-  "${pythonPath}/bin/pip3" install xml2rfc; # via https://xml2rfc.tools.ietf.org/
+  # "${pythonPath}/bin/pip3" install truffleHog; # installed using brew instead.
+  brew install trufflehog;
+  # "${pythonPath}/bin/pip3" install xml2rfc; # via https://xml2rfc.tools.ietf.org/ # installed using brew instead.
+  brew install xml2rfc;
   # pip install yamllint; # using brew instead.
+  brew install yamllint;
 
   # Mac App Store packages are installed using the mas cli; must be logged
   # into your iCloud account for this to work.
