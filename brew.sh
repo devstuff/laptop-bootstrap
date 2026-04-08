@@ -180,6 +180,7 @@ main() {
   brew install lastpass-cli;
   brew install less; # includes lesskey (MacOS doesn't for some weird reason)
   brew install lesspipe;
+  brew install librsvg;
 
   brew install mas;
   brew install maven;
@@ -335,7 +336,7 @@ main() {
   brew install homebrew/cask/docker; # Docker Desktop UI (originally I needed --force to avoid issues with existing completions).
   brew install dropbox;
 
-  brew install --cask git-credential-manager;
+  # brew install --cask git-credential-manager; # Microsoft's .NET one.
   brew install google-cloud-sdk;
   # brew install gpg-suite;
 
