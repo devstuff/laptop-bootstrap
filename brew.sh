@@ -95,9 +95,9 @@ main() {
   brew install berkeley-db; # Needed for installing perl 5.26+ via perlbrew; ref: https://stackoverflow.com/a/46660972/41321
   brew install blueutil;
 
-  brew install --no-quarantine clickhouse; # Deprecated due to Gatekeeper violation, will be disabled 2026-09-01.
-  brew install clickhouse-odbc;
-  brew install clickhouse-sql-parser;
+  # brew install --no-quarantine clickhouse; # Deprecated due to Gatekeeper violation, will be disabled 2026-09-01.
+  # brew install clickhouse-odbc;
+  # brew install clickhouse-sql-parser;
   brew install colordiff;
   brew install cosign;
   brew install coreutils;
