@@ -40,6 +40,23 @@ main() {
 
   notice "Downloading and updating brew"; # -------------------------------------------------------------
 
+  if [[ "$(uname -s)" == "Darwin" ]]; then
+    # Mac
+    if [[ "$(uname -m)" == "arm64" ]]; then
+      # Apple Silicon
+      homebrewPrefix="/opt/homebrew";
+    else
+      # Legacy Intel
+      homebrewPrefix="/usr/local";
+    fi;
+  else
+    # Linux.
+    homebrewPrefix="/home/linuxbrew/.linuxbrew";
+  fi;
+
+  brewPath="${homebrewPrefix}/bin/brew";
+  export PATH="${brewPath}:$PATH";
+
   if ! type -t brew; then
     >&2 echo "Downloading and installing Homebrew";
     # ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)";
