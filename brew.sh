@@ -37,6 +37,7 @@ main() {
   notice "You must agree to the XCode license."; # ------------------------------------------------------
 
   sudo xcodebuild -license accept;
+  sudo softwareupdate --install-rosetta; # For Intel compatibility on Apple Silicon
 
   notice "Downloading and updating brew"; # -------------------------------------------------------------
 
@@ -65,10 +66,10 @@ main() {
 
   brew update;
 
-  notice "Opening taps"; # ------------------------------------------------------------------------------
-
-  brew tap "homebrew/cask";
-  brew tap "homebrew/core";
+#  notice "Opening taps"; # ------------------------------------------------------------------------------
+#
+#  brew tap "homebrew/cask";
+#  brew tap "homebrew/core";
 
   notice "Latest bash shell"; # -------------------------------------------------------------------------
 
@@ -134,7 +135,7 @@ main() {
 #  brew install docker-credential-helper;      # for docker-credential-osxkeychain; supplied by Docker Desktop
 #  brew install docker-credential-helper-ecr;  # for docker-credential-helper-ecr-login; supplied by Docker Desktop
   brew install dockutil;
-  brew install dog;
+#  brew install dog; # ??
   brew install duf;
   brew install dust;
 
@@ -160,11 +161,10 @@ main() {
   brew install git-secrets;
   brew install git-sizer;
   brew install glab;    # GitLab's equivalent to GitHub's `gh`.
-  brew install gnu-gar; # For avoiding MacOS/BSD tar extended info that GNU doesn't handle. On the GNU side these cause
+  brew install gnu-tar; # For avoiding MacOS/BSD tar extended info that GNU doesn't handle. On the GNU side these cause
                         # warnings like: "tar: Ignoring unknown extended header keyword 'LIBARCHIVE.xattr.com.dropbox.attrs'"
   brew install gnu-units;
   brew install gnupg;
-  brew install gnupg2;
   brew install go;
   # brew install go-jira; # or jira-cli
   brew install gping;
@@ -213,7 +213,16 @@ main() {
   brew install multitail;
   brew install mypy;
   brew install mysql; # && brew services start mysql;
-  brew install mysql@5.7; # && brew services start mysql@5.7;
+  brew install mysql@8.4; # && brew services start mysql@8.4;
+
+  # --------------------
+  # Upgrading from MySQL <8.4 to MySQL >9.0 requires running MySQL 8.4 first:
+  brew services stop mysql;
+  brew install mysql@8.4;
+  brew services start mysql@8.4;
+  brew services stop mysql@8.4;
+  brew services start mysql;
+  # --------------------
 
   brew install nano;
   brew install npm;
@@ -221,13 +230,13 @@ main() {
 
   brew install opa;
   brew install openapi-generator;
-  brew install openssl@1.1;
+  brew install openssl@3;
+  brew install openssl@4;
 
   brew install p7zip;
-  brew install packer;
   brew install pandoc;
   brew install php@8.4;
-  brew install pinentry-mac && brew linkapps pinentry-mac;
+  brew install pinentry-mac; # && brew linkapps pinentry-mac;
   brew install platformio;
   brew install poetry;
   # brew install proguard;
@@ -241,7 +250,8 @@ main() {
   brew install rbenv-default-gems;
   brew install reattach-to-user-namespace;
   brew install redis;
-  brew install rfcdiff; # required for github.com/lvc/installer-4j
+#  brew install rfcdiff; # required for github.com/lvc/installer-4j
+  https://raw.githubusercontent.com/ietf-tools/rfcdiff/refs/heads/main/rfcdiff;
   brew install rlwrap;
   brew install ruby-build;
   brew install rust;
@@ -251,7 +261,7 @@ main() {
   brew install scala;
   brew install scalariform;
   brew install scalastyle;
-  brew install sendemail;
+#  brew install sendemail; # DEPRECATED; will be removed 2027-01-05.
   brew install sequel-ace;
   brew install shellcheck;
   brew install sleepwatcher; # expects /usr/local/sbin to exist, otherwise "brew link sleepwatcher" will fail.
@@ -264,13 +274,13 @@ main() {
   brew install sshuttle; # SSH auto-VPN
   brew install starship;
 
-  brew install terminal-notifier && brew linkapps terminal-notifier;
+  brew install terminal-notifier; # && brew linkapps terminal-notifier;
   # brew install terraform; # Pinned at v1.5.7 due to non-open-source license change (2023).
   brew install tree;
 
   brew install unzip;
 
-  brew install vault; # Hashicorp Vault
+#  brew install vault; # Hashicorp Vault
 
   brew install wdiff; # required for github.com/lvc/installer-4j
   brew install wget;
@@ -290,7 +300,9 @@ main() {
 
   brew install coursier/formulas/coursier;
   brew install discoteq/discoteq/flock;
+  brew install hashicorp/tap/packer;
   brew install hashicorp/tap/terraform; # Latest terraform, BUSL license
+  brew install hashicorp/tap/vault;
   brew install homeport/tap/dyff;
   brew install johanhaleby/kubetail/kubetail;
   brew install launchdarkly/homebrew-tap/ldcli;
@@ -323,15 +335,15 @@ main() {
   notice "Fonts"; # -------------------------------------------------------------------------------------
 
   # Hack info: https://github.com/chrissimpkins/Hack
-  brew install homebrew/cask-fonts/font-hack;
-  brew install homebrew/cask-fonts/font-hack-nerd-font;
-  brew install homebrew/cask-fonts/font-fira-code;
-  brew install homebrew/cask-fonts/font-fira-code-nerd-font;
-  brew install homebrew/cask-fonts/font-go;
-  brew install homebrew/cask-fonts/font-go-mono-nerd-font;
-  brew install homebrew/cask-fonts/font-inter; # https://rsms.me/inter/
-  brew install homebrew/cask-fonts/font-source-code-pro;
-  brew install homebrew/cask-fonts/font-sauce-code-pro-nerd-font;
+  brew install font-hack;
+  brew install font-hack-nerd-font;
+  brew install font-fira-code;
+  brew install font-fira-code-nerd-font;
+  brew install font-go;
+  brew install font-go-mono-nerd-font;
+  brew install font-inter; # https://rsms.me/inter/
+  brew install font-source-code-pro;
+  brew install font-sauce-code-pro-nerd-font;
 
   # # Alternate JVMs
   # brew install graalvm/tap/graalvm-ce-java11;
@@ -344,13 +356,13 @@ main() {
 
   brew install aerial; # Screensaver
   brew install araxis-merge; # Was broken, may need to download and install manually.
-  brew install authy;
+#  brew install authy; # Replaced with totp-cli
 
   brew install ccmenu;
   brew install charles;
 
   brew install datadog-agent;
-  brew install diffmerge;
+#  brew install diffmerge; # DEPRECATED; does not pass the macOS Gatekeeper check! It will be disabled on 2026-09-01.
   brew install homebrew/cask/docker; # Docker Desktop UI (originally I needed --force to avoid issues with existing completions).
   brew install dropbox;
 
@@ -368,7 +380,7 @@ main() {
 
   brew install mysqlworkbench;
 
-  brew install osxfuse;
+#  brew install osxfuse; # Deprecated, disabled 2026-03-28; replaced with `brew install --cask macfuse` (dependency of veracrypt)
 
   brew install paintbrush;
   brew install pdfkey-pro;
@@ -377,6 +389,8 @@ main() {
   brew install sqlitestudio;
   brew install sublime-text;
   brew install sublime-merge;
+
+  brew install totp-cli;
 
 #  brew install vagrant;
   brew install veracrypt;
@@ -413,9 +427,10 @@ main() {
   #
   notice "Mac App Store packages"; # --------------------------------------------------------------------
 
-  mas install 1028918091; # APG (2.2)
+  export MAS_NO_AUTO_INDEX=1; # Disable auto-indexing until done.
+  mas install 1028918091; # APG (2.2) [Requires Rosetta]
   mas install 961632517; # Be Focused Pro (2.0)
-  mas install 1121192229; # Better (2020.2)
+#  mas install 1121192229; # Better (2020.2) [No longer available]
   mas install 417375580; # BetterSnapTool (1.9.3)
 #  mas install 411246225; # Caffeine (1.1.1)
   mas install 574607554; # com.hummersoftware.ImageExifEditor (5.1.1)
@@ -430,12 +445,12 @@ main() {
   mas install 823766827; # OneDrive (20.084.0426)
 #  mas install 409201541; # Pages (10.1)
   mas install 1303222628; # Paprika Recipe Manager 3 (3.4.5)
-  mas install 984335872; # PDF Image Xtractor (1.3.3)
-  mas install 545164971; # PDF Toolkit+ (2.3)
+#  mas install 984335872; # PDF Image Xtractor (1.3.3) [No longer available]
+  mas install 545164971; # PDF Toolkit+ (2.3) [Requires Rosetta]
   mas install 520993579; # pwSafe (4.17)
   mas install 871368974; # QR Crafter (1.0)
 #  mas install 466385995; # SciTE (4.4.4)
-  mas install 496437906; # Shush (1.2.1)
+  mas install 496437906; # Shush (1.2.1) [Requires Rosetta]
   mas install 803453959; # Slack (4.8.0)
   mas install 552792489; # StatusClock (1.2)
   mas install 435410196; # Stay (1.3)
@@ -462,9 +477,9 @@ main() {
     done < <(find /Library/Java/JavaVirtualMachines -type d -maxdepth 1 -mindepth 1 -print);
   fi;
 
-  # Default to Java 17 for SBT.
+  # Default to Java 26 for SBT.
   if [ ! -r "${HOME}/.jenv/version" ]; then
-    jenv global 17;
+    jenv global 26;
     jenv rehash;
   fi;
 }
