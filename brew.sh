@@ -55,7 +55,7 @@ main() {
   fi;
 
   brewPath="${homebrewPrefix}/bin/brew";
-  export PATH="${brewPath}:$PATH";
+  eval "$("${brewPath}" shellenv)";
 
   if ! type -t brew; then
     >&2 echo "Downloading and installing Homebrew";
