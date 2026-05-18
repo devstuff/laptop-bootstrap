@@ -299,6 +299,7 @@ main() {
   brew install zip;
 
   brew install coursier/formulas/coursier;
+  brew install --HEAD devstuff/tap/feature_branches;
   brew install discoteq/discoteq/flock;
   brew install hashicorp/tap/packer;
   brew install hashicorp/tap/terraform; # Latest terraform, BUSL license
