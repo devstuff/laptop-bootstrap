@@ -301,6 +301,7 @@ main() {
   brew install coursier/formulas/coursier;
   brew install --HEAD devstuff/tap/feature_branches;
   brew install discoteq/discoteq/flock;
+  brew install git-pkgs/git-pkgs/forge;
   brew install hashicorp/tap/packer;
   brew install hashicorp/tap/terraform; # Latest terraform, BUSL license
   brew install hashicorp/tap/vault;
