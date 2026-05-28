@@ -181,6 +181,7 @@ main() {
   brew install hugo;
   brew install hunspell;
 
+  brew install imagemagick-full; # full for better SVG support
   brew install inkscape;
   brew install ipcalc;
   brew install ivy; # for ivycp
@@ -227,6 +228,7 @@ main() {
   brew install nano;
   brew install npm;
   brew install node; # AKA nodejs, npm
+  brew install nss;  # Mozilla Firefox support, required during bootstrap.
 
   brew install opa;
   brew install openapi-generator;
@@ -261,6 +263,7 @@ main() {
   brew install scala;
   brew install scalariform;
   brew install scalastyle;
+  brew install secretive; # For sudo-via-Touch-ID on (internal) SSH hosts
 #  brew install sendemail; # DEPRECATED; will be removed 2027-01-05.
   brew install sequel-ace;
   brew install shellcheck;
@@ -299,9 +302,9 @@ main() {
   brew install zip;
 
   brew install coursier/formulas/coursier;
-  brew install --HEAD devstuff/tap/feature_branches;
+  brew install --HEAD devstuff/tap/feature_branches; # My feature branches
   brew install discoteq/discoteq/flock;
-  brew install git-pkgs/git-pkgs/forge;
+  brew install git-pkgs/git-pkgs/forge; # Git forge CLI
   brew install hashicorp/tap/packer;
   brew install hashicorp/tap/terraform; # Latest terraform, BUSL license
   brew install hashicorp/tap/vault;
