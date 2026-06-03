@@ -301,6 +301,7 @@ main() {
 
   brew install zip;
 
+  brew install atlassian/acli/acli;
   brew install coursier/formulas/coursier;
   brew install --HEAD devstuff/tap/feature_branches; # My feature branches
   brew install discoteq/discoteq/flock;
