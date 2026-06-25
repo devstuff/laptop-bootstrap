@@ -138,6 +138,7 @@ main() {
 #  brew install dog; # ??
   brew install duf;
   brew install dust;
+  brew install duti; #
 
   brew install enchant;
   brew install esphome;
@@ -168,6 +169,7 @@ main() {
   brew install go;
   # brew install go-jira; # or jira-cli
   brew install gping;
+  brew install granted; # AWS role selector; https://granted.dev
   brew install graphviz;
   brew install grc;
   brew install grep;
@@ -318,7 +320,6 @@ main() {
   brew install snyk/tap/snyk; # https://snyk.io
   brew install versent/taps/saml2aws;
   brew install vmware-tanzu/carvel/vendir;
-  brew install common-fate/granted/granted; # AWS role selector; https://granted.dev
 
   notice "Command line completions"; # ------------------------------------------------------------------
 
