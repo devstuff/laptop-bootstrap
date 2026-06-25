@@ -138,7 +138,7 @@ main() {
 #  brew install dog; # ??
   brew install duf;
   brew install dust;
-  brew install duti; #
+  brew install duti; # Select default apps for documents and URL schemes on macOS
 
   brew install enchant;
   brew install esphome;
@@ -308,7 +308,7 @@ main() {
   brew install --HEAD devstuff/tap/feature_branches; # My feature branches
   brew install discoteq/discoteq/flock;
   brew install git-pkgs/git-pkgs/forge; # Git forge CLI
-  brew install hashicorp/tap/packer;
+  # brew install hashicorp/tap/packer;
   brew install hashicorp/tap/terraform; # Latest terraform, BUSL license
   brew install hashicorp/tap/vault;
   brew install homeport/tap/dyff;
@@ -318,8 +318,9 @@ main() {
   brew install mongodb/brew/mongodb-community;
   brew install moul/moul/docker-diff;
   brew install snyk/tap/snyk; # https://snyk.io
-  brew install versent/taps/saml2aws;
-  brew install vmware-tanzu/carvel/vendir;
+  # brew install versent/taps/saml2aws;
+  # brew install vmware-tanzu/carvel/vendir;
+  brew install common-fate/granted/granted; # AWS role selector; https://granted.dev
 
   notice "Command line completions"; # ------------------------------------------------------------------
 
