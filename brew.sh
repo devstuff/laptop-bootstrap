@@ -66,11 +66,6 @@ main() {
 
   brew update;
 
-#  notice "Opening taps"; # ------------------------------------------------------------------------------
-#
-#  brew tap "homebrew/cask";
-#  brew tap "homebrew/core";
-
   notice "Latest bash shell"; # -------------------------------------------------------------------------
 
   # Use Homebrew's version of bash as the login shell.
@@ -319,7 +314,7 @@ main() {
   brew install moul/moul/docker-diff;
   brew install snyk/tap/snyk; # https://snyk.io
   # brew install versent/taps/saml2aws;
-  # brew install vmware-tanzu/carvel/vendir;
+  # brew install carvel-dev/carvel/vendir;
   brew install common-fate/granted/granted; # AWS role selector; https://granted.dev
 
   notice "Command line completions"; # ------------------------------------------------------------------
@@ -393,6 +388,8 @@ main() {
   brew install paintbrush;
   brew install pdfkey-pro;
   brew install postman;
+
+  brew install raspberry-pi-imager;
 
   brew install sqlitestudio;
   brew install sublime-text;
